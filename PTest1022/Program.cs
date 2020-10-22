@@ -80,7 +80,10 @@ namespace PTest1022 {
             //出力については「タイトル」と「金額」を出力すること
 
             /*** ●●● ここへ解答を入力 ●●● ***/
-            books.FindAll(b => b.Price >= 1200).ForEach(b => Console.WriteLine($"タイトル：{b.Title}　金額：{b.Price}"));
+            foreach (var book in books.FindAll(b => b.Price >= 1200))
+            {
+                Console.WriteLine($"{book.Title}：{book.Price}");
+            }
             /*** ●●●●● ここまで ●●●●● ***/
             //Console.WriteLine($"ページの合計は{ pageSum }ページです。");
         }
@@ -94,8 +97,10 @@ namespace PTest1022 {
             //出力については「タイトル」と「ページ数」を出力すること
 
             /*** ●●● ここへ解答を入力 ●●● ***/
-            books.FindAll(b=>b.Title.Contains("物語")&&b.Pages>=400)
-                    .ForEach(b => Console.WriteLine($"タイトル：{b.Title}　ページ数：{b.Pages}"));
+            foreach (var title in books.FindAll(b => b.Title.Contains("物語") && b.Pages >= 400))
+            {
+                Console.WriteLine($"{title.Title}：{title.Pages}");
+            }
             /*** ●●●●● ここまで ●●●●● ***/
         }
 
@@ -107,8 +112,10 @@ namespace PTest1022 {
             //出力については改行をせず、ヨコにスペースを空けて出力する
             // 出力例）79 65 53 45 35 34 20 12
             /*** ●●● ここへ解答を入力 ●●● ***/
-            numbers.OrderByDescending(s => s).Distinct().ToList()
-                .ForEach(s => Console.Write($"{s} "));
+            foreach (var number in numbers.OrderByDescending(s => s).Distinct())
+            {
+                Console.Write($"{number} ");
+            }
 
 
 
@@ -138,10 +145,11 @@ namespace PTest1022 {
             // 出力例）60 36 135 195 102 105 195 159 237
 
             /*** ●●● ここへ解答を入力 ●●● ***/
-            foreach (int number in numbers)
+            foreach (int number in numbers.Select(n => n * 3))
             {
-                Console.Write($"{number * 3} ");
+                Console.Write($"{number} ");
             }
+            Console.WriteLine();//改行
             /*** ●●●●● ここまで ●●●●● ***/            
         }
 
